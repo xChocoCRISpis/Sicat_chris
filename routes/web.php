@@ -7,7 +7,9 @@ Route::get('/', function () {
     return view('login');
 });
 
-
-
 Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
 
