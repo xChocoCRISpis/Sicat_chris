@@ -19,7 +19,8 @@
             <div class="info-items">
                 
                 <h2>INICIO DE SESIÓN</h2>           
-                <form method="post" action="" class="form">
+                <form method="post" action="{{ route('login') }}" class="form">
+                    @csrf
                     <?php
                         //include("conexion.php");
                         //include("controlador.php");                    
