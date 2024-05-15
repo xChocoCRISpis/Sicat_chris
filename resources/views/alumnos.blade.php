@@ -80,14 +80,15 @@
                 <h1 class="logo">Alumnos</h1>
                 <div class="contact-form">
                     <h3>Alta de Alumnos</h3>
-                    <form action="">
+                    {{ Form::open(['url' => 'ruta_a_tu_controlador', 'method' => 'post']) }}
+
                         <p>
-                            <label for="fullname">Nombre(s)</label>
-                            <input type="text" name="fullname" id="fullname">
+                            <label>Apellido Materno</label>
+                            <input type="text" name="ama">
                         </p>
                         <p>
-                            <label>Apellido Paterno</label>
-                            <input type="email" name="email">
+                            <label>Num Control</label>
+                            <input type="text" name="noc">
                         </p>
                         <p>
                             <label>Celular</label>
@@ -95,18 +96,24 @@
                         </p>
                         <p>
                             <label>Correo</label>
-                            <input type="text" name="affair">
+                            <input type="email" name="affair">
                         </p>
-                        <p class="block">
-                            <label>Notas</label>
-                            <textarea name="message" rows="3"></textarea>
+                        <p>
+                            <label>Sexo</label>
+                            {{ Form::select('sexo', ['Masculino' => 'Masculino', 'Femenino' => 'Femenino'], null, ['placeholder' => 'Seleccione Sexo']) }}
                         </p>
-                        <p class="block">
-                            <button type="submit">
-                                Dar de Alta
-                            </button>
+                        <p>
+                            <label>Fecha Nac</label>
+                            <input type="date" name="fec">
+                        </p> 
+                        <p>
+                            <label>Semestre</label>
+                            {{ Form::select('semestre', ['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', '10' => '10'], null, ['placeholder' => 'Seleccione Semestre']) }}
                         </p>
-                    </form>
+
+                        <button type="submit">Enviar</button>
+
+                    {{ Form::close() }}
                 </div>
 
             </div>

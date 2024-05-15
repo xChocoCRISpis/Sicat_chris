@@ -17,3 +17,8 @@ Route::get('/inicio', function () {
 Route::get('/alumnos', function () {
     return view('alumnos');
 })->name('alumnos');
+
+//Ruta al controlador de alumnos
+Route::post('/add_alumnos', [AlumnosController::class, 'AgregarAlumno'])->name('AgregarAlumnos');
+Route::post('/show_carreras', [AlumnosController::class, 'VerCarreras'])->name('VerCarreras');
+
