@@ -24,7 +24,7 @@ class LoginController extends Controller
         if ($idUsuario !== null) {
             // Usuario autenticado, almacenar en sesión y redirigir
             session(['id' => $idUsuario]);
-            return redirect()->route('welcome');
+            return redirect()->route('inicio');
         } else {
             // Error de autenticación, redirigir a la página de inicio de sesión con un mensaje de error
             return redirect()->back()->with('error', 'El usuario o la contraseña son incorrectos');

@@ -23,6 +23,8 @@ return new class extends Migration
             $table->integer('Semestre');
             $table->integer('Nivel');
             $table->text('Foto')->nullable();
+            $table->char('Telefono',12);
+            $table->string('Correo',100);
             $table->integer('Id_carrera_fk')->unsigned();
 
             $table->foreign('Id_carrera_fk')->references('Id_carrera_pk')->on('tb_carreras');
