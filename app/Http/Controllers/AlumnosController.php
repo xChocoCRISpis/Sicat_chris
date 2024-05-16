@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
 
 class AlumnosController extends Controller
 {
@@ -37,5 +40,30 @@ class AlumnosController extends Controller
         foreach ($results as $result) {
             $this->carreras[$result->id] = $result->nombre_carrera;
         }
+    }
+
+    public function VerAlumnos(Request $request)
+    {
+        
+        $nom = $request->input("nombre");
+        $sem = $request->input("sem");
+        $sex = $request->input("sexo");
+        $carr = $request->input("carrera");
+
+       
+        $alumnos=DB::select('CALL sp_ShowAlumnos("todos",?,?,?,0,?)', [$nom, $sex, $sem, $carr]);
+        if($nom==null)
+        $nom="Ninguno";
+        if($sem==null || $sem==0)
+            $sem="Todos";
+        if($sex==null || $sex=="X")
+            $sex="Ambos";
+        if($carr==null || $carr==0)
+            $carr="Todas";
+        $filtros = ["Nombre"=>$nom,"Semestre"=>$sem,"Sexo"=>$sex,"Carrera"=>$carr];
+
+        
+        //dd($alumnos);
+        return view('alumnos', compact('alumnos','filtros'));
     }
 }

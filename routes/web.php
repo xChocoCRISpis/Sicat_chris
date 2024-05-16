@@ -18,3 +18,4 @@ Route::get('/alumnos', function () {
 
 Route::post('/agregar-alumno', [AlumnosController::class, 'AgregarAlumno'])->name('AgregarAlumnos');
 Route::get('/ver-carreras', [AlumnosController::class, 'VerCarreras'])->name('VerCarreras');
+Route::get('/ver-alumnos', [AlumnosController::class, 'VerAlumnos'])->name('VerAlumnos');

@@ -32,7 +32,7 @@
                 </div>
             </a>
 
-            <a href="{{ route('alumnos') }}">
+            <a href="{{ route('VerAlumnos') }}">
                 <div class="option">
                     <i class="fas fa-people-robbery" title="Actividades"></i>
                     <h4>Actividades</h4>

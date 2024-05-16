@@ -1,5 +1,4 @@
-<div>
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,33 +13,27 @@
         <div class="icon_menu">
             <i class="fas fa-bars" id="btn_open"></i>
             <h2>SICAT</h2>
-
         </div>
     </header>
 
     <div class="menu_side" id="menu_side">
-
         <div class="name_page">
             <i class="fas fa-pen-nib"></i>
             <h4>SICAT</h4>
         </div>
-
         <div class="options_menu">
-
             <a href="#" class="selected">
                 <div class="option">
                     <i class="fas fa-house" title="Inicio"></i>
                     <h4>Inicio</h4>
                 </div>
             </a>
-
             <a href="#">
                 <div class="option">
                     <i class="fas fa-people-robbery" title="Actividades"></i>
                     <h4>Actividades</h4>
                 </div>
             </a>
-
             <a href="#">
                 <div class="option">
                     <i class="fas fa-pen-to-square" title="Eventos"></i>
@@ -79,82 +72,79 @@
             <div class="contact-wrapper">
                 <h1 class="logo">Alumnos</h1>
                 <div class="contact-form">
-                    <h3>Filtros</h3>
-                    <p>
-                        <label for="Nombre">Nombre: </label>
-                        {{$filtros['Nombre']}}
-                        <label for="Semestre">Semestre: </label>
-                        {{$filtros['Semestre']}}
-                        <label for="Sexo">Sexo: </label>
-                        {{$filtros['Sexo']}}
-                        <label for="Carrera">Carrera: </label>
-                        {{$filtros['Carrera']}}
-                    <form action="">
+                    <h3>Alta de Alumnos</h3>
+                    <form method="post" action="{{ route('AgregarAlumnos') }}" class="form">
+                        @csrf
                         <p>
-                            <label for="Nombre">Nombre</label>
-                            <input type="text" name="nombre" id="nombre">
+                            <label for="fullname">Nombre(s)</label>
+                            <input type="text" name="nombre" id="fullname">
                         </p>
                         <p>
-                            <label for="Carrera">Carrera</label>
-                            <select name="carrera" id="car">
-                                <option value="0">Todos</option>
-                                <option value="1">Sist. Comp</option>
-                                <option value="2">Industrial</option>
-                                <option value="3">Gestión</option>
+                            <label>Apellido Paterno</label>
+                            <input type="text" name="apa">
+                        </p>
+                        <p>
+                            <label>Apellido Materno</label>
+                            <input type="text" name="ama">
+                        </p>
+                        <p>
+                            <label>Num Control</label>
+                            <input type="text" name="noc">
+                        </p>
+                        <p>
+                            <label>Celular</label>
+                            <input type="tel" name="phone">
+                        </p>
+                        <p>
+                            <label for="Correo">Correo</label>
+                            <input type="email" name="email" id="correo">
+                        </p>
+                        <p>
+                            <label for="Sexo">Sexo</label>
+                            <select name="sexo" id="sexo">
+                                <option value="M">Masculino</option>
+                                <option value="H">Femenino</option>
                             </select>
+                        </p>
+                        <p>
+                            <label>Fecha Nac</label>
+                            <input type="date" name="fec">
                         </p>
                         <p>
                             <label for="Sem">Semestre</label>
                             <select name="sem" id="sem">
-                                <option value="0">Todos</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                             </select>
                         </p>
                         <p>
-                            <label for="Sexo">Sexo</label>
-                            <select name="sexo" id="sexo">
-                                <option value="X">Todos</option>
-                                <option value="M">Masculino</option>
-                                <option value="H">Femenino</option>
+                            <label for="nivel">Tipo</label>
+                            <select name="tipo" id="tipo">
+                                <option value="1">Puntos</option>
+                                <option value="2">En curso</option>
+                                <option value="3">Graduado</option>
                             </select>
                         </p>
-                        <button href="{{ route('VerAlumnos') }}"> Filtrar</button>
+                        <p>
+                            <label for="carrera">Carrera</label>
+                            <select name="carrera" id="carrera">
+                                <option value="1">Sist. Comp</option>
+                                <option value="2">Industrial</option>
+                                <option value="3">Gestión</option>
+                            </select>
+                        </p>
+                        <input type="hidden" name="foto" value="foto.jpg">
+                        <p class="block">
+                            <button type="submit">
+                                REGISTRAR
+                            </button>
+                        </p>
                     </form>
-                    <div id="tabla-alumnos">
-                        <table border ="5px">
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Apellidos</th>
-                                <th>Sexo</th>
-                                <th>No. Control</th>
-                                <th>Carrera</th>
-                                <th>Semestre</th>                            </tr>
-                            <tr>
-                            @foreach($alumnos as $alumno)
-                            <tr>
-                                <td>{{ $alumno->nom_a }}</td>
-                                <td>{{ $alumno->ApP }} {{ $alumno->ApM}}</td>
-                                <td>{{ $alumno->sex }}</td>
-                                <td>{{ $alumno->num_con }}</td>
-                                <td>{{ $alumno->Carrera }}</td>
-                                <td>{{ $alumno->sem}}</td>
-                            </tr>
-                            @endforeach
-                            </tr> 
-                        </table>
-                    </div>
-                    
                 </div>
-                
             </div>
         </div>
     </main>
-<script>
-</script>
+    <script src="js/script.js"></script>
 </body>
 </html>
-</div>
-
-
