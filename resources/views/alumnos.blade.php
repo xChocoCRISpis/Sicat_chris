@@ -1,5 +1,4 @@
-<div>
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,33 +13,27 @@
         <div class="icon_menu">
             <i class="fas fa-bars" id="btn_open"></i>
             <h2>SICAT</h2>
-
         </div>
     </header>
 
     <div class="menu_side" id="menu_side">
-
         <div class="name_page">
             <i class="fas fa-pen-nib"></i>
             <h4>SICAT</h4>
         </div>
-
         <div class="options_menu">
-
-            <a href="{{ route('inicio') }}" class="selected">
+            <a href="#" class="selected">
                 <div class="option">
                     <i class="fas fa-house" title="Inicio"></i>
                     <h4>Inicio</h4>
                 </div>
             </a>
-
             <a href="#">
                 <div class="option">
                     <i class="fas fa-people-robbery" title="Actividades"></i>
                     <h4>Actividades</h4>
                 </div>
             </a>
-
             <a href="#">
                 <div class="option">
                     <i class="fas fa-pen-to-square" title="Eventos"></i>
@@ -73,15 +66,23 @@
             </a>
         </div>
     </div>
-
+    
     <main>
         <div class="content">
             <div class="contact-wrapper">
                 <h1 class="logo">Alumnos</h1>
                 <div class="contact-form">
                     <h3>Alta de Alumnos</h3>
-                    {{ Form::open(['url' => 'ruta_a_tu_controlador', 'method' => 'post']) }}
-
+                    <form method="post" action="{{ route('AgregarAlumnos') }}" class="form">
+                        @csrf
+                        <p>
+                            <label for="fullname">Nombre(s)</label>
+                            <input type="text" name="nombre" id="fullname">
+                        </p>
+                        <p>
+                            <label>Apellido Paterno</label>
+                            <input type="text" name="apa">
+                        </p>
                         <p>
                             <label>Apellido Materno</label>
                             <input type="text" name="ama">
@@ -95,32 +96,55 @@
                             <input type="tel" name="phone">
                         </p>
                         <p>
-                            <label>Correo</label>
-                            <input type="email" name="affair">
+                            <label for="Correo">Correo</label>
+                            <input type="email" name="email" id="correo">
                         </p>
                         <p>
-                            <label>Sexo</label>
-                            {{ Form::select('sexo', ['Masculino' => 'Masculino', 'Femenino' => 'Femenino'], null, ['placeholder' => 'Seleccione Sexo']) }}
+                            <label for="Sexo">Sexo</label>
+                            <select name="sexo" id="sexo">
+                                <option value="M">Masculino</option>
+                                <option value="H">Femenino</option>
+                            </select>
                         </p>
                         <p>
                             <label>Fecha Nac</label>
                             <input type="date" name="fec">
-                        </p> 
-                        <p>
-                            <label>Semestre</label>
-                            {{ Form::select('semestre', ['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', '10' => '10'], null, ['placeholder' => 'Seleccione Semestre']) }}
                         </p>
-
-                        <button type="submit">Enviar</button>
-
-                    {{ Form::close() }}
+                        <p>
+                            <label for="Sem">Semestre</label>
+                            <select name="sem" id="sem">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="nivel">Tipo</label>
+                            <select name="tipo" id="tipo">
+                                <option value="1">Puntos</option>
+                                <option value="2">En curso</option>
+                                <option value="3">Graduado</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="carrera">Carrera</label>
+                            <select name="carrera" id="carrera">
+                                <option value="1">Sist. Comp</option>
+                                <option value="2">Industrial</option>
+                                <option value="3">Gestión</option>
+                            </select>
+                        </p>
+                        <input type="hidden" name="foto" value="foto.jpg">
+                        <p class="block">
+                            <button type="submit">
+                                REGISTRAR
+                            </button>
+                        </p>
+                    </form>
                 </div>
-
             </div>
         </div>
     </main>
-
     <script src="js/script.js"></script>
 </body>
 </html>
-</div>
