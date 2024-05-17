@@ -29,6 +29,7 @@ class AlumnosController extends Controller
 
         $result=DB::select('CALL sp_addalumno(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
         [$num_control, $nombre, $ap_pat, $ap_mat, $sex, $nac, $sem, $nivel, $foto, $tel, $correo, $carrera]);
+        return redirect()->route("VerAlumnos");
     }
 
     public function VerCarreras(Request $request)

@@ -145,7 +145,8 @@
                             </tr> 
                         </table>
                     </div>
-                    
+                    <h3>Agregar un alumno</h3>
+                    <a href="{{ route('alumnos_alta') }}" class="btn">Alta alumno</a>
                 </div>
                 
             </div>

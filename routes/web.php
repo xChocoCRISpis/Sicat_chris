@@ -15,6 +15,11 @@ Route::get('/inicio', function () {
 Route::get('/alumnos', function () {
     return view('alumnos');
 })->name('alumnos');
+Route::get('/alumnos_altas', function () {
+    return view('alumnos_altas');
+})->name('alumnos_alta');
+
+
 
 Route::post('/agregar-alumno', [AlumnosController::class, 'AgregarAlumno'])->name('AgregarAlumnos');
 Route::get('/ver-carreras', [AlumnosController::class, 'VerCarreras'])->name('VerCarreras');
