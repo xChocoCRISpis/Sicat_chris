@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
-    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}"> <!-- Incluye los estilos de la sidebar -->
     <link rel="stylesheet" href="{{ asset('css/alumnos.css') }}">
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 </head>
@@ -146,5 +146,20 @@
         </div>
     </main>
     <script src="js/script.js"></script>
+</body>
+</html>
+<script src="js/script.js"></script>
+    <script>
+        document.getElementById('btn_open').addEventListener('click', function() {
+            const menuSide = document.getElementById('menu_side');
+            const mainContent = document.querySelector('main');
+            menuSide.classList.toggle('active');
+            if (menuSide.classList.contains('active')) {
+                mainContent.style.marginLeft = '250px';
+            } else {
+                mainContent.style.marginLeft = '0';
+            }
+        });
+    </script>
 </body>
 </html>
