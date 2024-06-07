@@ -18,9 +18,17 @@ Route::get('/alumnos', function () {
 Route::get('/alumnos_altas', function () {
     return view('alumnos_altas');
 })->name('alumnos_alta');
+Route::get('/alumnos_edit', function () {
+    return view('alumnos_edit');
+})->name('alumnos_edit');
+
 
 
 
 Route::post('/agregar-alumno', [AlumnosController::class, 'AgregarAlumno'])->name('AgregarAlumnos');
 Route::get('/ver-carreras', [AlumnosController::class, 'VerCarreras'])->name('VerCarreras');
 Route::get('/ver-alumnos', [AlumnosController::class, 'VerAlumnos'])->name('VerAlumnos');
+
+Route::get('/actividades-dep', function () {
+    return view('actividades_dep');
+})->name('actividades_dep');

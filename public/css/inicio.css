@@ -6,6 +6,12 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    align-items: center;
+    justify-content: center;
+    height: 200vh;
     background-color: #fff5e1;
     overflow-x: hidden;
     display: flex;
