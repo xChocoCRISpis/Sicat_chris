@@ -30,10 +30,12 @@ header {
     color: #a3753a;
     display: flex;
     align-items: center;
+    height: 75px;
 }
 
 .icon_menu i {
     margin-right: 10px;
+    width: 70px;
 }
 
 .menu_side {
@@ -174,4 +176,53 @@ section {
     70% { margin-left: -200%; }
     75% { margin-left: -300%; }
     95% { margin-left: -300%; }
+}
+
+ /* Estilos adicionales para la sidebar */
+ .menu_side {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background: #5A0A18;
+    color: #a3753a;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-250px);
+    z-index: 999;
+    overflow-y: auto;
+}
+.menu_side.active {
+    transform: translateX(0);
+}
+main {
+    margin-left: 0;
+    transition: margin-left 0.3s ease-in-out;
+}
+main.shifted {
+    margin-left: 250px;
+}
+.icon_menu {
+    cursor: pointer;
+}
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+.submenu.active {
+    display: block;
+}
+.option {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: #a3753a;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+.option:hover {
+    background: #444;
+    color: #fff;
+}
+.option i {
+    margin-right: 15px;
 }

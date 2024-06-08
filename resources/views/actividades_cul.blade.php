@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 </head>
-
 @extends('layouts.app')
 @section('title', 'Inicio')
 @section('content')

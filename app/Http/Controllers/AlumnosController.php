@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\Controller;
 
 
@@ -45,7 +46,6 @@ class AlumnosController extends Controller
 
     public function VerAlumnos(Request $request)
     {
-        
         $nom = $request->input("nombre");
         $sem = $request->input("sem");
         $sex = $request->input("sexo");
@@ -66,5 +66,43 @@ class AlumnosController extends Controller
         
         //dd($alumnos);
         return view('alumnos', compact('alumnos','filtros'));
+    }
+
+
+    // Obtener un alumno específico
+    public function GetAlumno($id_alumno)
+    {
+        $response = Http::get('http://localhost:3000/notes/' . $id_alumno);
+
+        if ($response->successful()) {
+            return response()->json($response->json());
+        } else {
+            return response()->json(['message' => 'Error obteniendo alumno'], $response->status());
+        }
+    }
+
+    // Actualizar un alumno específico
+    public function ActualizarAlumno(Request $request, $id_alumno)
+    {
+        $response = Http::patch('http://localhost:3000/notes/' . $id_alumno, $request->all());
+
+        if ($response->successful()) {
+            return response()->json(['message' => 'Alumno actualizado exitosamente', 'alumno' => $response->json()]);
+        } else {
+            return response()->json(['message' => 'Error actualizando alumno'], $response->status());
+        }
+    }
+
+    // Eliminar un alumno específico
+     // Eliminar un alumno específico llamando a la API
+    public function EliminarAlumno($id_alumno)
+    {
+        $response = Http::delete('http://localhost:3000/notes/' . $id_alumno);
+
+        if ($response->successful()) {
+            return response()->json(['message' => 'Alumno eliminado exitosamente']);
+        } else {
+            return response()->json(['message' => 'Error eliminando alumno', 'details' => $response->json()], $response->status());
+        }
     }
 }

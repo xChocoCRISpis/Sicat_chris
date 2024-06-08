@@ -26,10 +26,26 @@
                 <i class="fas fa-house" title="Inicio"></i>
                 <h4>Inicio</h4>
             </a>
-            <a href="{{ route('VerAlumnos') }}" class="option">
+            <a href="{{ route('VerAlumnos') }}">
+                <div class="option">
+                    <i class="fas fa-people-robbery" title="Actividades"></i>
+                    <h4>Alumnos</h4>
+                </div>
+            </a>
+            <div class="option" onclick="toggleSubmenu('submenu_actividades')">
                 <i class="fas fa-people-robbery" title="Actividades"></i>
                 <h4>Actividades</h4>
-            </a>
+            </div>
+            <div class="submenu" id="submenu_actividades">
+                <a href="{{ route('VerActividadesDeportivas') }}" class="option">
+                    <i class="fas fa-running" title="Deportivas"></i>
+                    <h4>Deportivas</h4>
+                </a>
+                <a href="{{ route('VerActividadesCulturales') }}" class="option">
+                    <i class="fas fa-palette" title="Culturales"></i>
+                    <h4>Culturales</h4>
+                </a>
+            </div>
             <a href="#" class="option">
                 <i class="fas fa-pen-to-square" title="Eventos"></i>
                 <h4>Eventos</h4>
@@ -46,10 +62,15 @@
                 <i class="fas fa-person-shelter" title="Perfil"></i>
                 <h4>Perfil</h4>
             </a>
-            <a href="#" class="option">
-                <i class="fas fa-person-walking-arrow-right" title="Salir"></i>
-                <h4>Salir</h4>
+            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <div class="option">
+                    <i class="fas fa-person-walking-arrow-right" title="Salir"></i>
+                    <h4>Salir</h4>
+                </div>
             </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
         </div>
     </div>
 
@@ -65,6 +86,11 @@
             menuSide.classList.toggle('active');
             mainContent.classList.toggle('shifted');
         });
+
+        function toggleSubmenu(id) {
+            const submenu = document.getElementById(id);
+            submenu.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
